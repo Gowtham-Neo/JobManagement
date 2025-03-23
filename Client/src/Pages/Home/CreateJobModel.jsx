@@ -1,14 +1,42 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const CreateJobModal = ({ isOpen, onClose }) => {
+const CreateJobModal = ({ isOpen, onClose, onJobCreated }) => {
+  const [validationErrors, setValidationErrors] = useState({});
+  const validateForm = () => {
+    const errors = {};
+
+    if (!formData.jobTitle.trim()) errors.jobTitle = "Job title is required.";
+    if (!formData.companyName.trim())
+      errors.companyName = "Company name is required.";
+    if (!formData.location) errors.location = "Location is required.";
+    if (!formData.jobType) errors.jobType = "Job type is required.";
+
+    if (formData.salaryMin <= 0)
+      errors.salaryMin = "Minimum salary must be greater than 0.";
+    if (formData.salaryMax <= 0)
+      errors.salaryMax = "Maximum salary must be greater than 0.";
+
+    console.log(formData.salaryMin,formData.salaryMax)
+
+
+    if (!formData.deadline)
+      errors.deadline = "Application deadline is required.";
+    if (!formData.description.trim())
+      errors.description = "Description is required.";
+
+    setValidationErrors(errors);
+
+    return Object.keys(errors).length === 0; // true if no errors
+  };
+
   const [formData, setFormData] = useState({
     jobTitle: "",
     companyName: "",
     location: "",
     jobType: "FullTime",
-    salaryMin: 0,
-    salaryMax: 0,
+    salaryMin: "",
+    salaryMax: "",
     deadline: "",
     description: "",
   });
@@ -23,11 +51,14 @@ const CreateJobModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) {
+      return; // Stop submission if validation fails
+    }
     try {
       const res = await axios.post("http://localhost:5000/jobs", formData);
-      alert("Job created!");
       onClose();
-      const data=await res.data
+      if (onJobCreated) onJobCreated();
+      const data = await res.data;
       console.log(res);
     } catch (error) {
       console.error("Error creating job:", error);
@@ -62,6 +93,11 @@ const CreateJobModal = ({ isOpen, onClose }) => {
                 onChange={handleChange}
                 className="w-full mt-1 px-3 py-2 border rounded-md focus:ring-1 focus:ring-black focus:outline-none"
               />
+              {validationErrors.jobTitle && (
+                <p className="text-red-500 text-xs mt-1">
+                  {validationErrors.jobTitle}
+                </p>
+              )}
             </div>
 
             <div className="flex-1">
@@ -74,6 +110,11 @@ const CreateJobModal = ({ isOpen, onClose }) => {
                 onChange={handleChange}
                 className="w-full mt-1 px-3 py-2 border rounded-md focus:ring-1 focus:ring-black focus:outline-none"
               />
+              {validationErrors.companyName && (
+                <p className="text-red-500 text-xs mt-1">
+                  {validationErrors.companyName}
+                </p>
+              )}
             </div>
           </div>
 
@@ -91,6 +132,11 @@ const CreateJobModal = ({ isOpen, onClose }) => {
                 <option value="Remote">Remote</option>
                 <option value="Hybrid">Hybrid</option>
               </select>
+              {validationErrors.location && (
+                <p className="text-red-500 text-xs mt-1">
+                  {validationErrors.location}
+                </p>
+              )}
             </div>
 
             <div className="flex-1">
@@ -106,6 +152,11 @@ const CreateJobModal = ({ isOpen, onClose }) => {
                 <option value="Internship">Internship</option>
                 <option value="Contract">Contract</option>
               </select>
+              {validationErrors.jobType && (
+                <p className="text-red-500 text-xs mt-1">
+                  {validationErrors.jobType}
+                </p>
+              )}
             </div>
           </div>
 
@@ -117,18 +168,32 @@ const CreateJobModal = ({ isOpen, onClose }) => {
                   name="salaryMin"
                   type="number"
                   placeholder="₹0"
+                  min={0}
+                  step={1000}
                   value={formData.salaryMin}
                   onChange={handleChange}
                   className="w-1/2 px-3 py-2 border rounded-md focus:ring-1 focus:ring-black focus:outline-none"
                 />
+                {validationErrors.salaryMin && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {validationErrors.salaryMin}
+                  </p>
+                )}
                 <input
                   name="salaryMax"
                   type="number"
                   placeholder="₹12,00,000"
+                  min={0}
+                  step={1000}
                   value={formData.salaryMax}
                   onChange={handleChange}
                   className="w-1/2 px-3 py-2 border rounded-md focus:ring-1 focus:ring-black focus:outline-none"
                 />
+                {validationErrors.salaryMax && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {validationErrors.salaryMax}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -143,6 +208,11 @@ const CreateJobModal = ({ isOpen, onClose }) => {
                 onChange={handleChange}
                 className="w-full mt-1 px-3 py-2 border rounded-md focus:ring-1 focus:ring-black focus:outline-none"
               />
+              {validationErrors.deadline && (
+                <p className="text-red-500 text-xs mt-1">
+                  {validationErrors.deadline}
+                </p>
+              )}
             </div>
           </div>
 
@@ -156,6 +226,11 @@ const CreateJobModal = ({ isOpen, onClose }) => {
               onChange={handleChange}
               className="w-full mt-1 px-3 py-2 border rounded-md focus:ring-1 focus:ring-black focus:outline-none resize-none"
             ></textarea>
+            {validationErrors.description && (
+              <p className="text-red-500 text-xs mt-1">
+                {validationErrors.description}
+              </p>
+            )}
           </div>
 
           <div className="flex justify-between mt-6">

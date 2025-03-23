@@ -50,6 +50,10 @@ function Home() {
 
       console.log(filters.salary[0], filters.salary[1]);
 
+      console.log("job",  job.salaryMin / 12 , job.salaryMax / 12);
+
+      console.log(filters.salary[0] * 1000, filters.salary[1] * 1000);
+
       const matchesSalary =
         job.salaryMin / 12 >= filters.salary[0] * 1000 &&
         job.salaryMax / 12 <= filters.salary[1] * 1000;
@@ -69,6 +73,18 @@ function Home() {
     }));
   };
 
+  const fetchJobs = async () => {
+    axios
+      .get("http://localhost:5000/jobs")
+      .then((res) => {
+        setJobs(res.data);
+        setFilteredJobs(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching jobs:", err);
+      });
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar
@@ -76,8 +92,11 @@ function Home() {
         onFilterChange={handleFilterChange}
       />
       <JobList jobs={filteredJobs} />
-
-      <CreateJobModal isOpen={showModal} onClose={handleCloseModal} />
+      <CreateJobModal
+        isOpen={showModal}
+        onClose={handleCloseModal}
+        onJobCreated={fetchJobs}
+      />{" "}
     </div>
   );
 }
