@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import JobList from "./JobList";
 import CreateJobModal from "./CreateJobModel";
 import axios from "axios";
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 function Home() {
   const [showModal, setShowModal] = useState(false);
 
@@ -23,7 +23,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/jobs")
+      .get(`${BACKEND_URL}/jobs`)
       .then((res) => {
         setJobs(res.data);
         setFilteredJobs(res.data);
@@ -75,7 +75,7 @@ function Home() {
 
   const fetchJobs = async () => {
     axios
-      .get("http://localhost:5000/jobs")
+      .get(`${BACKEND_URL}/jobs`)
       .then((res) => {
         setJobs(res.data);
         setFilteredJobs(res.data);

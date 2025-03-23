@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
 const CreateJobModal = ({ isOpen, onClose, onJobCreated }) => {
   const [validationErrors, setValidationErrors] = useState({});
@@ -17,8 +18,7 @@ const CreateJobModal = ({ isOpen, onClose, onJobCreated }) => {
     if (formData.salaryMax <= 0)
       errors.salaryMax = "Maximum salary must be greater than 0.";
 
-    console.log(formData.salaryMin,formData.salaryMax)
-
+    console.log(formData.salaryMin, formData.salaryMax);
 
     if (!formData.deadline)
       errors.deadline = "Application deadline is required.";
@@ -55,7 +55,7 @@ const CreateJobModal = ({ isOpen, onClose, onJobCreated }) => {
       return; // Stop submission if validation fails
     }
     try {
-      const res = await axios.post("http://localhost:5000/jobs", formData);
+      const res = await axios.post(`${BACKEND_URL}/jobs`, formData);
       onClose();
       if (onJobCreated) onJobCreated();
       const data = await res.data;

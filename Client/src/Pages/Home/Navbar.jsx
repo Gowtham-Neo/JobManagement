@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { IoLocationOutline } from "react-icons/io5";
 import cyber from "../../assets/image.png";
 import Slider from "@mui/material/Slider";
 const Navbar = ({ onCreateJobClick, onFilterChange }) => {
