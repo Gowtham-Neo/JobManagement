@@ -20,13 +20,17 @@ function Home() {
 
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     axios
       .get(`${BACKEND_URL}/jobs`)
       .then((res) => {
         setJobs(res.data);
         setFilteredJobs(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Error fetching jobs:", err);
@@ -50,7 +54,7 @@ function Home() {
 
       console.log(filters.salary[0], filters.salary[1]);
 
-      console.log("job",  job.salaryMin / 12 , job.salaryMax / 12);
+      console.log("job", job.salaryMin / 12, job.salaryMax / 12);
 
       console.log(filters.salary[0] * 1000, filters.salary[1] * 1000);
 
@@ -91,7 +95,7 @@ function Home() {
         onCreateJobClick={handleOpenModal}
         onFilterChange={handleFilterChange}
       />
-      <JobList jobs={filteredJobs} />
+      <JobList jobs={filteredJobs} loading={loading} />
       <CreateJobModal
         isOpen={showModal}
         onClose={handleCloseModal}

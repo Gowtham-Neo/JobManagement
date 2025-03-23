@@ -138,7 +138,15 @@ const JobCard = ({ job }) => {
   );
 };
 
-const JobList = ({ jobs }) => {
+const JobList = ({ jobs ,loading}) => {
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-60">
+        <div className="w-12 h-12 border-4 border-blue-400 border-dashed rounded-full animate-spin"></div>
+        <p className="ml-4 text-gray-500 text-lg">Loading jobs...</p>
+      </div>
+    );
+  }
   if (jobs.length === 0) {
     return <p className="text-center text-gray-500 mt-10">No jobs found!</p>;
   }
