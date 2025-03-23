@@ -271,7 +271,7 @@ const CreateJobModal = ({ isOpen, onClose, onJobCreated }) => {
 
             <button
               type="submit"
-              className="bg-blue-500 text-white px-10 py-2 rounded-md hover:bg-blue-700"
+              className="bg-blue-500 text-white px-10 py-2 rounded-md hover:bg-blue-700 cursor-pointer"
             >
               Publish &raquo;
             </button>
