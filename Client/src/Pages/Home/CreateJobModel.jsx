@@ -58,6 +58,17 @@ const CreateJobModal = ({ isOpen, onClose, onJobCreated }) => {
       const res = await axios.post(`${BACKEND_URL}/jobs`, formData);
       onClose();
       if (onJobCreated) onJobCreated();
+      setFormData({
+        jobTitle: "",
+        companyName: "",
+        location: "",
+        jobType: "FullTime", // default value if you want
+        salaryMin: "",
+        salaryMax: "",
+        deadline: "",
+        description: "",
+      });
+
       const data = await res.data;
       console.log(res);
     } catch (error) {
