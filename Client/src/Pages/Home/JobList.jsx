@@ -58,7 +58,7 @@ const JobCard = ({ job }) => {
       </div>
 
       {/* Job title */}
-      <h2 className="text-lg sm:text-xl font-semibold mt-4">{job.jobTitle}</h2>
+      <h2 className="text-lg sm:text-xl font-bold mt-4">{job.jobTitle}</h2>
 
       {/* Info section: Experience, location, salary */}
       <div className="flex flex-wrap items-center text-gray-500 text-xs sm:text-sm mt-3 gap-3">

@@ -35,7 +35,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
   };
 
   return (
-    <div className="w-full flex flex-row md:flex-col items-center p-4 bg-white shadow-xl px-10">
+    <div className=" w-full flex flex-row md:flex-col items-center p-4 bg-white shadow-xl px-10 font">
       {/* Top Nav */}
       <div className="w-full max-w-7xl py-2">
         <div className="flex md:flex space-x-8 text-gray-700 text-md font-medium justify-center">
@@ -52,7 +52,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
               <a
                 key={index}
                 href="#"
-                className=" hover:scale-110 hover:shadow-lg rounded-b-md px-4 py-2 transition duration-150 ease-in-out"
+                className="hover:scale-110 hover:shadow-lg rounded-b-md px-4 py-2 transition duration-150 ease-in-out font-semibold"
               >
                 {label}
               </a>
@@ -60,7 +60,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
 
             <button
               onClick={onCreateJobClick}
-              className="bg-gradient-to-r from-purple-600 to-purple-500 text-white px-5 py-2 rounded-full text-sm font-medium hover:opacity-90 transition cursor-pointer"
+              className="bg-gradient-to-r from-[#A128FF] to-[#6100AD] text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition cursor-pointer"
             >
               Create Jobs
             </button>
@@ -68,7 +68,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-gray-300 px-6 py-3 bg-white w-full mt-2">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-gray-300 px-6 py-3 bg-white w-full mt-2 font-medium">
         <div className="flex items-center w-full md:w-auto gap-2">
           <svg
             width="20"
@@ -90,7 +90,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
             value={search}
             onChange={handleSearchChange}
             placeholder="Search By Job Title, Role"
-            className="outline-none border-none bg-transparent text-lg text-gray-600 placeholder-gray-500 w-full md:w-60 font-sans"
+            className="outline-none border-none bg-transparent text-lg text-gray-500 placeholder-gray-500 w-full md:w-60"
           />
         </div>
         <div className="hidden md:block h-12 bg-gray-200 w-0.5"></div>
@@ -112,7 +112,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
             name="location"
             value={location}
             onChange={handleLocationChange}
-            className="text-lg text-gray-600 outline-none"
+            className="text-lg text-gray-500 outline-none font"
           >
             <option value="">Preferred Location</option>
             <option value="Onsite">Onsite</option>
@@ -142,9 +142,9 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
             name="jobType"
             value={jobType}
             onChange={handleJobTypeChange}
-            className="text-lg text-gray-600 outline-none"
+            className="text-lg text-gray-500 outline-none"
           >
-            <option value="">Job Type</option>
+            <option value="">Job type</option>
             <option value="Full Time">Full Time</option>
             <option value="Part Time">Part Time</option>
             <option value="Internship">Internship</option>
@@ -154,10 +154,10 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
         <div className="hidden md:block h-12 bg-gray-200 w-0.5"></div>
         <div className="flex flex-col md:flex-col justify-around items-center md:items-start gap-2 md:gap-2">
           <div className="flex flex-row md:flex:row justify-around items-center md:items-start gap-8 md:gap-8">
-            <span className="text-md text-gray-600 whitespace-nowrap font-sans font-medium">
+            <span className="text-md text-[#222222] whitespace-nowrap font-semibold">
               Salary Per Month
             </span>
-            <span className="text-md text-gray-600 whitespace-nowrap">
+            <span className=" text-[#222222] whitespace-nowrap font-semibold text-md">
               ₹{salaryRange[0]}k - ₹{salaryRange[1]}k
             </span>
           </div>

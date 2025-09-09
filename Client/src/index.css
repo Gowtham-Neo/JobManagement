@@ -1,1 +1,10 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "Satoshi Variable";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2-variations");
+  font-weight: 100 900; /* supports full variable weight */
+  font-display: swap;
+}
+body {
+  font-family: "Satoshi Variable", sans-serif;
+}
