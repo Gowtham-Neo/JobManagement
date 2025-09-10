@@ -35,12 +35,12 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
   };
 
   return (
-    <div className=" w-full flex flex-row md:flex-col items-center p-4 bg-white shadow-xl px-10 font">
+    <div className=" w-full flex flex-row md:flex-col items-center bg-white shadow-md px-8 pt-4">
       {/* Top Nav */}
-      <div className="w-full max-w-7xl py-2">
+      <div className="w-full max-w-full">
         <div className="flex md:flex space-x-8 text-gray-700 text-md font-medium justify-center">
-          <div className="border-2 md:flex space-x-4 items-center px-3 py-3 rounded-full border-amber-50 md:shadow-md">
-            <img src={cyber} alt="Logo" className="w-10 h-10" />
+          <div className="border-2 md:flex space-x-5 items-center px-7 py-5 rounded-full border-amber-50 md:shadow-md">
+            <img src={cyber} alt="Logo" className="w-11 h-11" />
 
             {[
               "Home",
@@ -60,7 +60,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
 
             <button
               onClick={onCreateJobClick}
-              className="bg-gradient-to-r from-[#A128FF] to-[#6100AD] text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition cursor-pointer"
+              className="bg-linear-to-b from-[#A128FF] to-[#6100AD] text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition cursor-pointer"
             >
               Create Jobs
             </button>
@@ -68,8 +68,8 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-gray-300 px-6 py-3 bg-white w-full mt-2 font-medium">
-        <div className="flex items-center w-full md:w-auto gap-2">
+      <div className="flex flex-col md:flex-row items-center justify-around border-gray-300 py-3 bg-white w-full mt-4 font-medium">
+        <div className="flex flex-row justify-around items-center w-full md:w-68 gap-6">
           <svg
             width="20"
             height="20"
@@ -90,11 +90,11 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
             value={search}
             onChange={handleSearchChange}
             placeholder="Search By Job Title, Role"
-            className="outline-none border-none bg-transparent text-lg text-gray-500 placeholder-gray-500 w-full md:w-60"
+            className="outline-none border-none bg-transparent text-gray-500 placeholder-gray-500 md:w-49 text-md"
           />
         </div>
-        <div className="hidden md:block h-12 bg-gray-200 w-0.5"></div>
-        <div className="flex items-center cursor-pointer w-full md:w-auto gap-2">
+        <div className="hidden md:block h-11 bg-gray-200 w-0.5"></div>
+        <div className="flex cursor-pointer w-full md:w-60 justify-around items-start gap-6">
           <svg
             width="18"
             height="23"
@@ -112,7 +112,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
             name="location"
             value={location}
             onChange={handleLocationChange}
-            className="text-lg text-gray-500 outline-none font"
+            className="text-md text-gray-500 outline-none w-full"
           >
             <option value="">Preferred Location</option>
             <option value="Onsite">Onsite</option>
@@ -120,12 +120,12 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
             <option value="Hybrid">Hybrid</option>
           </select>
         </div>
-        <div className="hidden md:block h-12 bg-gray-200 w-0.5"></div>
-        <div className="flex items-center cursor-pointer w-full md:w-auto gap-4">
+        <div className="hidden md:block h-11 bg-gray-200 w-0.5"></div>
+        <div className="flex items-center cursor-pointer w-full md:w-54  gap-6">
           <svg
-            width="20"
-            height="18"
-            viewBox="0 0 20 18"
+            width="22"
+            height="20"
+            viewBox="0 0 19 22"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -142,7 +142,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
             name="jobType"
             value={jobType}
             onChange={handleJobTypeChange}
-            className="text-lg text-gray-500 outline-none"
+            className="text-md text-gray-500 outline-none w-full"
           >
             <option value="">Job type</option>
             <option value="Full Time">Full Time</option>
@@ -151,7 +151,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
             <option value="Contract">Contract</option>
           </select>
         </div>
-        <div className="hidden md:block h-12 bg-gray-200 w-0.5"></div>
+        <div className="hidden md:block h-11 bg-gray-200 w-0.5"></div>
         <div className="flex flex-col md:flex-col justify-around items-center md:items-start gap-2 md:gap-2">
           <div className="flex flex-row md:flex:row justify-around items-center md:items-start gap-8 md:gap-8">
             <span className="text-md text-[#222222] whitespace-nowrap font-semibold">

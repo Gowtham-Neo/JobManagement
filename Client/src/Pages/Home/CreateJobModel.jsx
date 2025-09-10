@@ -246,7 +246,7 @@ const CreateJobModal = ({ isOpen, onClose, onJobCreated }) => {
 
           <div className="flex justify-between mt-6">
             <div
-              className="flex flex-row items-center border-2 border-black px-8 py-2 rounded-md hover:bg-gray-100 justify-around cursor-pointer"
+              className="flex flex-row  items-center border-2 border-black px-8 py-2 rounded-md hover:bg-gray-100 justify-around cursor-pointer font-medium"
               onClick={onClose}
             >
               <button type="button" className="pr-2">
@@ -271,7 +271,7 @@ const CreateJobModal = ({ isOpen, onClose, onJobCreated }) => {
 
             <button
               type="submit"
-              className="bg-blue-500 text-white px-10 py-2 rounded-md hover:bg-blue-700 cursor-pointer"
+              className="bg-[#00AAFF] text-white px-10 py-2 rounded-md hover:bg-blue-700 cursor-pointer font-medium"
             >
               Publish &raquo;
             </button>

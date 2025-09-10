@@ -1,13 +1,13 @@
 import React from "react";
-import amazon from "../../assets/amazon.webp";
+import amazon from "../../assets/Amazon.png";
 import cmw from "../../assets/cmwlogo.webp";
 import EY from "../../assets/EY.webp";
 import Google from "../../assets/Google.webp";
 import cts from "../../assets/Logo_Cognizant.webp";
 import microsoft from "../../assets/microsoft_PNG13.webp";
-import swiggy from "../../assets/swiggy.webp";
+import swiggy from "../../assets/Swiggy.png";
 import tcs from "../../assets/tcs.webp";
-import tesla from "../../assets/Tesla.webp";
+import tesla from "../../assets/Tesla.png";
 import DefaultLogo from "../../assets/default.jpeg";
 
 const JobCard = ({ job }) => {
@@ -42,17 +42,17 @@ const JobCard = ({ job }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 w-full max-w-sm mx-auto flex flex-col justify-between transition-all hover:scale-[1.03] duration-300 mt-4 sm:mt-6">
+    <div className="bg-white rounded-2xl sm:p-4 flex flex-col justify-between transition-all hover:scale-[1.03] duration-300 w-[306px] shadow-sm pt-1">
       {/* Top section: Logo and time */}
       <div className="flex justify-between relative">
-        <div className="border rounded-2xl px-3 py-3 border-amber-50 shadow-xl">
+        <div className="border rounded-2xl px-3 py-3 border-amber-50 shadow-sm bg-linear-to-b from-[#FEFEFD] to-[#F1F1F1]">
           <img
             src={getCompanyLogo(job)}
             alt={job.companyName}
-            className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-lg"
+            className="w-10 h-10 sm:w-15 sm:h-15 object-contain rounded-2xl"
           />
         </div>
-        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-blue-200 text-black px-2 py-1 rounded-lg text-xs sm:text-sm font-medium">
+        <div className="absolute sm:right-1 sm:top-0 bg-[#B0D9FF] text-black px-2 py-1.5 rounded-lg text-xs sm:text-sm font-medium">
           {timeAgo(job.createdAt)}
         </div>
       </div>
@@ -61,7 +61,7 @@ const JobCard = ({ job }) => {
       <h2 className="text-lg sm:text-xl font-bold mt-4">{job.jobTitle}</h2>
 
       {/* Info section: Experience, location, salary */}
-      <div className="flex flex-wrap items-center text-gray-500 text-xs sm:text-sm mt-3 gap-3">
+      <div className="flex flex-wrap items-center text-[#5A5A5A] text-md sm:text-md mt-3 gap-3 font-medium">
         <div className="flex items-center gap-1">
           <svg
             width="19"
@@ -121,7 +121,7 @@ const JobCard = ({ job }) => {
       </div>
 
       {/* Description */}
-      <ul className="text-gray-600 text-xs sm:text-sm mt-4 space-y-1 sm:space-y-2 list-disc list-inside">
+      <ul className="text-[#555555] text-xs sm:text-sm mt-4 space-y-1 sm:space-y-2 list-disc list-inside h-[74px] overflow-hidden font-medium">
         {job.description
           .split(". ")
           .slice(0, 2)
@@ -131,14 +131,14 @@ const JobCard = ({ job }) => {
       </ul>
 
       {/* Button */}
-      <button className="mt-4 sm:mt-6 bg-blue-400 hover:bg-blue-600 text-white font-medium py-2 rounded-xl transition-all cursor-pointer text-sm sm:text-base">
+      <button className="mt-4 sm:mt-6 bg-[#00AAFF] hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition-all cursor-pointer text-sm sm:text-base">
         Apply Now
       </button>
     </div>
   );
 };
 
-const JobList = ({ jobs ,loading}) => {
+const JobList = ({ jobs, loading }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-60">
@@ -152,7 +152,7 @@ const JobList = ({ jobs ,loading}) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-4 sm:p-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:p-6 mx-9 h-full mt-6">
       {jobs.map((job) => (
         <JobCard key={job.id} job={job} />
       ))}
