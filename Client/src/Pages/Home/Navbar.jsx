@@ -60,9 +60,17 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
 
             <button
               onClick={onCreateJobClick}
-              className="bg-linear-to-b from-[#A128FF] to-[#6100AD] text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition cursor-pointer"
+              className="hover:scale-110 transition duration-200 relative overflow-hidden bg-gradient-to-b from-[#A128FF] to-[#6100AD] text-white px-5 py-2 rounded-full text-sm font-semibold cursor-pointer group"
             >
-              Create Jobs
+              {/* Default text */}
+              <span className="block transition-transform duration-300 group-hover:-translate-y-96 h-1/2">
+                Create Jobs
+              </span>
+
+              {/* Hover text */}
+              <span className="absolute left-1/2 top-full -translate-x-1/2 block transition-transform duration-300 group-hover:-translate-y-7 h-1/2">
+                Login
+              </span>
             </button>
           </div>
         </div>
@@ -161,7 +169,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
               ₹{salaryRange[0]}k - ₹{salaryRange[1]}k
             </span>
           </div>
-          <div className="flex items-center gap-2 w-full md:w-55 font-medium">
+          <div className="flex items-center gap-2 w-full md:w-60 font-medium">
             <Slider
               getAriaLabel={() => "Salary Range"}
               value={salaryRange}
@@ -171,7 +179,7 @@ const Navbar = ({ onCreateJobClick, onFilterChange }) => {
               }
               valueLabelDisplay="auto"
               min={50}
-              max={80}
+              max={100}
               sx={{
                 color: "black",
                 width: "100%",

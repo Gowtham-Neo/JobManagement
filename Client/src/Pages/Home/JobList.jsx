@@ -45,11 +45,11 @@ const JobCard = ({ job }) => {
     <div className="bg-white rounded-2xl sm:p-4 flex flex-col justify-between transition-all hover:scale-[1.03] duration-300 w-[306px] shadow-sm pt-1">
       {/* Top section: Logo and time */}
       <div className="flex justify-between relative">
-        <div className="border rounded-2xl px-3 py-3 border-amber-50 shadow-sm bg-linear-to-b from-[#FEFEFD] to-[#F1F1F1]">
+        <div className="border rounded-2xl px-1 py-1 border-amber-50 shadow-sm bg-linear-to-b from-[#FEFEFD] to-[#F1F1F1] outline-1 outline-amber-100">
           <img
             src={getCompanyLogo(job)}
             alt={job.companyName}
-            className="w-10 h-10 sm:w-15 sm:h-15 object-contain rounded-2xl"
+            className="w-10 h-10 sm:w-17 sm:h-17 rounded-full object-cover"
           />
         </div>
         <div className="absolute sm:right-1 sm:top-0 bg-[#B0D9FF] text-black px-2 py-1.5 rounded-lg text-xs sm:text-sm font-medium">
@@ -121,9 +121,9 @@ const JobCard = ({ job }) => {
       </div>
 
       {/* Description */}
-      <ul className="text-[#555555] text-xs sm:text-sm mt-4 space-y-1 sm:space-y-2 list-disc list-inside h-[74px] overflow-hidden font-medium">
+      <ul className="text-[#555555] text-xs sm:text-sm mt-4 space-y-1 sm:space-y-0 list-disc list-inside h-[79px] overflow-hidden font-medium">
         {job.description
-          .split(". ")
+          .split(".")
           .slice(0, 2)
           .map((point, idx) => (
             <li key={idx}>{point}</li>
@@ -131,7 +131,7 @@ const JobCard = ({ job }) => {
       </ul>
 
       {/* Button */}
-      <button className="mt-4 sm:mt-6 bg-[#00AAFF] hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition-all cursor-pointer text-sm sm:text-base">
+      <button className="mt-4 bg-[#00AAFF]  text-white font-medium py-3 rounded-xl transition-all cursor-pointer text-sm sm:text-base">
         Apply Now
       </button>
     </div>
